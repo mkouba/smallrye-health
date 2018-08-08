@@ -24,12 +24,12 @@ import org.eclipse.microprofile.health.HealthCheckResponse;
 @ApplicationScoped
 public class SmallRyeHealthReporter {
     private static final Map<String, ?> JSON_CONFIG = Collections.singletonMap(JsonGenerator.PRETTY_PRINTING, true);
-    
+
     public void reportHealth(OutputStream out, SmallRyeHealth health) throws IOException {
-        
+
         JsonWriterFactory factory = Json.createWriterFactory(JSON_CONFIG);
         JsonWriter writer = factory.createWriter(out);
-        
+
         writer.writeObject(health.getPayload());
         writer.close();
     }
@@ -89,7 +89,7 @@ public class SmallRyeHealthReporter {
 
     @Inject
     @Health
-    private Instance<HealthCheck> checks;
+    Instance<HealthCheck> checks;
 }
 
 
